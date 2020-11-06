@@ -82,3 +82,11 @@ interface Todo {
         - Means TS has no idea wha this is - can't check for correct property references
         - Avoid variables with "any" at all costs
   - Type Inference - Typrescript tries to figure out what type of value a variable refers to
+
+#### Type annotations for functions
+
+- Code we add to tell Typescript what type of arguments a function will receive an what type of values it will return
+
+#### Type inference for functions
+
+- Typescript tries to figure out what type of value a function will return
