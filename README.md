@@ -90,3 +90,15 @@ interface Todo {
 #### Type inference for functions
 
 - Typescript tries to figure out what type of value a function will return
+
+### Typed Arrays
+
+- Arrays where each element is some consistent type fo value
+- TS can do type ingerence when extracting values from an array
+- TS can prevent us from adding incompatible values to the array
+- We can get help with 'map', 'forEach', 'reduce' functions
+- Flexible - arrays can still contain multiple different types
+
+#### When to use typed arrays?
+
+- Any time we need to represent a collection of records with some arbitrary sort order
