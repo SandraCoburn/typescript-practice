@@ -61,3 +61,32 @@ interface Todo {
   completed: boolean;
 }
 ```
+
+- Types: are used by the Typescript Compiler to analyze our code for errors. Types allow other engineers to understand whant values are flowing around our codebase.
+  - Easy way to refer to the different properties and functions that a value has like arrays, strings etc.
+  - Every value that we create has a type assigned to it.
+  - Primitive Types:
+    - number, string, boolean, symbol, void, null, undefined
+  - Object Types:
+    - functions, classes, arrays, objects
+  - Type Annotations - Code we add to tell typescript what type of value a variable will refer to.
+    - Variables
+    - Functions
+    - Objects
+  - Type annotations are needed:
+    - When we declare a variable on one line then initialize it later
+    - When we sant a variable to have a type that can't be inferred
+    - When a function returns they "any" type and we need to clarigy the value
+      - any - Type:
+        - A type, just as "string" or "boolean" are
+        - Means TS has no idea wha this is - can't check for correct property references
+        - Avoid variables with "any" at all costs
+  - Type Inference - Typrescript tries to figure out what type of value a variable refers to
+
+#### Type annotations for functions
+
+- Code we add to tell Typescript what type of arguments a function will receive an what type of values it will return
+
+#### Type inference for functions
+
+- Typescript tries to figure out what type of value a function will return
