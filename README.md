@@ -73,4 +73,12 @@ interface Todo {
     - Variables
     - Functions
     - Objects
+  - Type annotations are needed:
+    - When we declare a variable on one line then initialize it later
+    - When we sant a variable to have a type that can't be inferred
+    - When a function returns they "any" type and we need to clarigy the value
+      - any - Type:
+        - A type, just as "string" or "boolean" are
+        - Means TS has no idea wha this is - can't check for correct property references
+        - Avoid variables with "any" at all costs
   - Type Inference - Typrescript tries to figure out what type of value a variable refers to
