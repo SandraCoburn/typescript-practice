@@ -170,6 +170,23 @@ npm install -g parcel-bundler
     ```
 - We can also install types for faker from DefinitelyTyped: @types/faker
 
-- ```npm install @types/faker '''
+- ```
+    npm install @types/faker
 
   ```
+
+  Generate a Google Dev Project at http:console.developers.google.com
+
+- Enable Google Maps support inside the project
+- Generate an API key from google to be able to use google maps in the app.
+- Add the google maps script tag to our html file
+
+```
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKKSiZc6Fu2bumNd1tbMLaqinIs9CmwcA"></script>
+```
+
+- Then add types for google maps:
+
+```
+npm install --save @types/googlemaps
+```
