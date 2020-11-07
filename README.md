@@ -47,7 +47,7 @@ node index.js
 You can use ts-node to compile and run at the same time:
 
 ```
-ts-node index.tx
+ts-node index.ts
 ```
 
 ## Some Typescript datatypes
@@ -126,3 +126,15 @@ const sprite: Drink = ['clear', true, 40];
 
 - Create functions that accept arguments that are typed with interfaces
 - Objectrs/classes can decide to 'implement' a given interface to work with a function
+
+### Classes
+
+- Blueprint to create an object with some fields(values) and methods(functions) to represent a "thing"
+- Modifiers
+  - public: This method can be called any where any time (default)
+  - private: This method can only be called by other methods in this class
+  - protected: This method can be called by other methods in this class, or by other methods in child classes
+- Fields with inheritance:
+  - If we add public to the constructor in the class we can use the constructor in child class
+
+#### Interface + classes = How we get really strong code reuse in TS
