@@ -102,3 +102,18 @@ interface Todo {
 #### When to use typed arrays?
 
 - Any time we need to represent a collection of records with some arbitrary sort order
+
+### Tuple - Array-like structure where each element represents some property of a record
+
+- An array can be turned into a tuple by adding the type to it so the values won't be moved
+
+```
+const pepsi: [string, boolean, number] = ['brown', true, 40];
+```
+
+- Type alias can be use if when we have many instances of something:
+
+```
+type Drink = [string, boolean, number];
+const sprite: Drink = ['clear', true, 40];
+```
