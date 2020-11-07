@@ -47,7 +47,7 @@ node index.js
 You can use ts-node to compile and run at the same time:
 
 ```
-ts-node index.tx
+ts-node index.ts
 ```
 
 ## Some Typescript datatypes
@@ -90,3 +90,51 @@ interface Todo {
 #### Type inference for functions
 
 - Typescript tries to figure out what type of value a function will return
+
+### Typed Arrays
+
+- Arrays where each element is some consistent type fo value
+- TS can do type ingerence when extracting values from an array
+- TS can prevent us from adding incompatible values to the array
+- We can get help with 'map', 'forEach', 'reduce' functions
+- Flexible - arrays can still contain multiple different types
+
+#### When to use typed arrays?
+
+- Any time we need to represent a collection of records with some arbitrary sort order
+
+### Tuple - Array-like structure where each element represents some property of a record
+
+- An array can be turned into a tuple by adding the type to it so the values won't be moved
+
+```
+const pepsi: [string, boolean, number] = ['brown', true, 40];
+```
+
+- Type alias can be use if when we have many instances of something:
+
+```
+type Drink = [string, boolean, number];
+const sprite: Drink = ['clear', true, 40];
+```
+
+### Interfaces
+
+- Creates a new custom type, describig the property names and value types of an object
+
+### General Strategy for Reusable Code in TS
+
+- Create functions that accept arguments that are typed with interfaces
+- Objectrs/classes can decide to 'implement' a given interface to work with a function
+
+### Classes
+
+- Blueprint to create an object with some fields(values) and methods(functions) to represent a "thing"
+- Modifiers
+  - public: This method can be called any where any time (default)
+  - private: This method can only be called by other methods in this class
+  - protected: This method can be called by other methods in this class, or by other methods in child classes
+- Fields with inheritance:
+  - If we add public to the constructor in the class we can use the constructor in child class
+
+#### Interface + classes = How we get really strong code reuse in TS
