@@ -1,7 +1,7 @@
 import faker from 'faker';
 
 // initialize inside the constructor
-class User {
+export class User {
   name: string;
   location: {
     lat: number;
