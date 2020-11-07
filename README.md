@@ -121,3 +121,8 @@ const sprite: Drink = ['clear', true, 40];
 ### Interfaces
 
 - Creates a new custom type, describig the property names and value types of an object
+
+### General Strategy for Reusable Code in TS
+
+- Create functions that accept arguments that are typed with interfaces
+- Objectrs/classes can decide to 'implement' a given interface to work with a function
