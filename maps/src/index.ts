@@ -7,5 +7,5 @@ const user = new User();
 const company = new Company();
 // pass the class name as an argument so if you have more instances of cCustomMap you'll use other classnames
 const customMap = new CustomMap('map');
-customMap.addUserMarker(user);
-customMap.addCompanyMarker(company);
+customMap.addMarker(user); //user satisfies the location for mappable interface
+customMap.addMarker(company); //company satisfies the location for mappable interface

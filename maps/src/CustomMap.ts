@@ -1,6 +1,13 @@
-import { User } from './User';
-import { Company } from './Company';
 import { googlemaps } from 'googlemaps';
+
+// Instructions to every other class
+//on how they can be an argument to "addMarker"
+interface Mappable {
+  location: {
+    lat: number;
+    lng: number;
+  };
+}
 
 export class CustomMap {
   private googleMap: google.maps.Map; // so no one else can get a hold of this out of this class
@@ -12,7 +19,7 @@ export class CustomMap {
   }
 
   //One solution to have a reusable marker
-  addMarker(mappable: User | Company): void {
+  addMarker(mappable: Mappable): void {
     //TS will look only at the properties both share: location
 
     new google.maps.Marker({
@@ -23,14 +30,4 @@ export class CustomMap {
       },
     });
   }
-  //instance of user and company * bad code because it repeats on user and company markers
-  // addCompanyMarker(company: Company): void {
-  //   new google.maps.Marker({
-  //     map: this.googleMap,
-  //     position: {
-  //       lat: company.location.lat,
-  //       lng: company.location.lng,
-  //     },
-  //   });
-  // }
 }
