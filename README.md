@@ -138,3 +138,55 @@ const sprite: Drink = ['clear', true, 40];
   - If we add public to the constructor in the class we can use the constructor in child class
 
 #### Interface + classes = How we get really strong code reuse in TS
+
+## Bundling with Parcel
+
+Tool to help us run Typescript in the browser:
+
+```
+npm install -g parcel-bundler
+```
+
+- Then create a new directory: maps. Inside create an index html, src directory and inside src create an index.ts
+  - to use the parcel-bundler go inside directory maps:
+  ```
+  parcel index.html
+  ```
+  - This will create an app and run it in host 1234. Parcel creates an index Js file instead of index.ts
+
+### Map app - It creates a marker on a google map for a user or company. When you click on marker it will show a pop up window personalized to company or user.
+
+"src" Folder
+
+- index.ts
+- Map.ts
+- User.ts
+- Company.ts
+  npmjs.com has a "faker" package to generate fake data. Look for API methods. Then Address module. This module can randomly generate: zipCode, city,, cityPrefix, citySuffix, streetName, streetAddres... etc.
+  Name module can geneerate user information.
+- To install faker package:
+  - ```
+    npm install faker
+    ```
+- We can also install types for faker from DefinitelyTyped: @types/faker
+
+- ```
+    npm install @types/faker
+
+  ```
+
+  Generate a Google Dev Project at http:console.developers.google.com
+
+- Enable Google Maps support inside the project
+- Generate an API key from google to be able to use google maps in the app.
+- Add the google maps script tag to our html file
+
+```
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKKSiZc6Fu2bumNd1tbMLaqinIs9CmwcA"></script>
+```
+
+- Then add types for google maps:
+
+```
+npm install --save @types/googlemaps
+```
