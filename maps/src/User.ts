@@ -1,12 +1,16 @@
 import faker from 'faker';
+import { Mappable } from './CustomMap';
 
 // initialize inside the constructor
-export class User {
+export class User implements Mappable {
+  // implements Mappable to have every user satisfyes Mappable properties, it will give errors if not
   name: string;
   location: {
     lat: number;
     lng: number;
   };
+  color: string = 'red';
+
   constructor() {
     this.name = faker.name.firstName();
     this.location = {

@@ -7,6 +7,7 @@ export class Company {
     lat: number;
     lng: number;
   };
+  color: 'red';
   constructor() {
     this.copanyName = faker.company.companyName();
     this.catchPhrase = faker.company.catchPhrase();
