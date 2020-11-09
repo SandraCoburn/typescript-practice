@@ -154,7 +154,7 @@ npm install -g parcel-bundler
   ```
   - This will create an app and run it in host 1234. Parcel creates an index Js file instead of index.ts
 
-### Map app
+### Map app - It creates a marker on a google map for a user or company. When you click on marker it will show a pop up window personalized to company or user.
 
 "src" Folder
 
