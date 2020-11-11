@@ -247,6 +247,7 @@ if (this.collection instanceof Array) {}
 #### The Sorter class code should be completely generic for different kinds of data
 
 - We'll create helper functions to make it happen:
+  Instructions on how to be elegible for sorting:
 
 ```
 classSorter {
@@ -265,5 +266,19 @@ class NumbersCollection {
   swap(i,j)
   compare(i,j)
   length: number
+}
+```
+
+```
+class CharactersCollection{
+  swap(i,j)
+  compare(i,j)
+}
+```
+
+```
+class LinkedList{
+  swap(i,j)
+  compare(i,j)
 }
 ```
