@@ -1,7 +1,11 @@
-import { NumbersCollection } from './NumbersCollection';
-
+// interface that will show what you need to have to be eligible for sorting
+interface Sortable {
+  length: number;
+  compare(leftIndex: number, rightIndex: number): boolean;
+  swap(leftIndex: number, rightIndex: number): void;
+}
 export class Sorter {
-  constructor(public collection: NumbersCollection) {}
+  constructor(public collection: Sortable) {}
 
   sort(): void {
     const length = this.collection.length;
