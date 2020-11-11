@@ -228,7 +228,7 @@ npm install nodemon concurrently
   },
 ```
 
-### Type Guards
+### The sorter class should be able to sort numbers, strings, linkedLists. We could use <strong>Type Guards</strong> to personalize code for every different data type.
 
 - To lift a restriction on two different types, like number and string, we use Type guards to trick TS into allowing to have array types on an array of numbers and an array of strings. So if we use an if statement, TS will only use number methods for an array of numbers.
 - Type Guard for primitive types like number, string, boolean, symbol
@@ -242,4 +242,28 @@ if(typeof this.collection === "string"){}
 ```
 if (this.collection instanceof Array) {}
 ``
+```
+
+#### The Sorter class code should be completely generic for different kinds of data
+
+- We'll create helper functions to make it happen:
+
+```
+classSorter {
+  sort(){
+    for() for()
+    if(this.collection.compare()){
+      this.collection.swap()
+    }
+  }
+}
+```
+
+```
+class NumbersCollection {
+  data: number[];
+  swap(i,j)
+  compare(i,j)
+  length: number
+}
 ```
