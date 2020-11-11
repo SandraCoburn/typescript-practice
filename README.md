@@ -211,7 +211,7 @@ Now when you run <strong>tsc</strong> in the Sort directory, it will compile the
 
 - If we type this command: tsc -W The compiler will watch for changes in our src directory
 
-#### To have the compiler and TS working together without having to run the save and execute commands every time we make a change we can install a json file and nodemon to keep track of changes
+#### To have the compiler and TS working together without having to run the save and execute commands every time we make a change to json package, we can install a json file and nodemon to keep track of changes by doing npm start
 
 ```
 npm init -y
@@ -226,4 +226,20 @@ npm install nodemon concurrently
     "start:run": "nodemon build/index.js",
     "start": "concurrently npm:start:*"
   },
+```
+
+### Type Guards
+
+- To lift a restriction on two different types, like number and string, we use Type guards to trick TS into allowing to have array types on an array of numbers and an array of strings. So if we use an if statement, TS will only use number methods for an array of numbers.
+- Type Guard for primitive types like number, string, boolean, symbol
+
+```
+if(typeof this.collection === "string"){}
+```
+
+- For any other type of value(every other value that is created with a constructor function) like Array, Date etc:
+
+```
+if (this.collection instanceof Array) {}
+``
 ```
