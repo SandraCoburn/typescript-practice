@@ -190,3 +190,40 @@ npm install -g parcel-bundler
 ```
 npm install --save @types/googlemaps
 ```
+
+### Sorting Algorithm
+
+- To organize file in this project we need to create a new directory named SORT. Add to directories there: src and build. Build will hold the compiler's files.
+- to customize the compiler add a tsconfig.json file inside the sort directory with this command:
+
+```
+tsc --init
+```
+
+- To tell the compiler where to save the files go inside the configuration file and uncomment to lines:
+
+```
+"outDir": "./build" /* Redirect output structure to the directory. */,
+"rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+```
+
+Now when you run <strong>tsc</strong> in the Sort directory, it will compile the js files and send them to the build directory.
+
+- If we type this command: tsc -W The compiler will watch for changes in our src directory
+
+#### To have the compiler and TS working together without having to run the save and execute commands every time we make a change we can install a json file and nodemon to keep track of changes
+
+```
+npm init -y
+npm install nodemon concurrently
+```
+
+- Open package json and add these scripts:
+
+```
+ "scripts": {
+    "start:build": "tsc -W",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+```
