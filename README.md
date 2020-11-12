@@ -190,3 +190,114 @@ npm install -g parcel-bundler
 ```
 npm install --save @types/googlemaps
 ```
+
+### Sorting Algorithm
+
+- To organize file in this project we need to create a new directory named SORT. Add to directories there: src and build. Build will hold the compiler's files.
+- to customize the compiler add a tsconfig.json file inside the sort directory with this command:
+
+```
+tsc --init
+```
+
+- To tell the compiler where to save the files go inside the configuration file and uncomment to lines:
+
+```
+"outDir": "./build" /* Redirect output structure to the directory. */,
+"rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+```
+
+Now when you run <strong>tsc</strong> in the Sort directory, it will compile the js files and send them to the build directory.
+
+- If we type this command: tsc -W The compiler will watch for changes in our src directory
+
+#### To have the compiler and TS working together without having to run the save and execute commands every time we make a change to json package, we can install a json file and nodemon to keep track of changes by doing npm start
+
+```
+npm init -y
+npm install nodemon concurrently
+```
+
+- Open package json and add these scripts:
+
+```
+ "scripts": {
+    "start:build": "tsc -W",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+```
+
+### The sorter class should be able to sort numbers, strings, linkedLists. We could use <strong>Type Guards</strong> to personalize code for every different data type.
+
+- To lift a restriction on two different types, like number and string, we use Type guards to trick TS into allowing to have array types on an array of numbers and an array of strings. So if we use an if statement, TS will only use number methods for an array of numbers.
+- Type Guard for primitive types like number, string, boolean, symbol
+
+```
+if(typeof this.collection === "string"){}
+```
+
+- For any other type of value(every other value that is created with a constructor function) like Array, Date etc:
+
+```
+if (this.collection instanceof Array) {}
+``
+```
+
+#### The Sorter class code should be completely generic for different kinds of data
+
+- We'll create helper functions to make it happen:
+  Instructions on how to be elegible for sorting:
+
+```
+classSorter {
+  sort(){
+    for() for()
+    if(this.collection.compare()){
+      this.collection.swap()
+    }
+  }
+}
+```
+
+```
+class NumbersCollection {
+  data: number[];
+  swap(i,j)
+  compare(i,j)
+  length: number
+}
+```
+
+```
+class CharactersCollection{
+  swap(i,j)
+  compare(i,j)
+}
+```
+
+```
+class LinkedList{
+  swap(i,j)
+  compare(i,j)
+}
+```
+
+#### Abstrat Classes
+
+- Can't be used to create an object directly
+- Only used as a parent class
+- Can contain real implementation for some methods
+- The implemented methods can refer to other methods that don't actually exist yet(we still have to provide names and types for the un-implemented methods)
+- Can make child classes promise to implement some other method
+
+#### Interfaces vs Inheritance/abstact Classes
+
+- Interfaces:
+  - Sets up a contract between different classes
+  - Use when we have very different objects that we want to work together
+  - Promotes loose coupling
+- Inheritance/Abstract Classes:
+  - Sets up a contract between different classes
+  - Use when we are trying to build up a definition of an object
+  - Strongly couples classes together
