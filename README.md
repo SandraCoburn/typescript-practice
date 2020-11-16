@@ -301,3 +301,58 @@ class LinkedList{
   - Sets up a contract between different classes
   - Use when we are trying to build up a definition of an object
   - Strongly couples classes together
+
+### Reusable Code, Stats app will read a CSV file, run it and analyze it.
+
+#### CSV Data -> Load -> Parse -> Analyze -> Report
+
+- Documentation on reading csv files: [NodeJS.org](https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options)
+- To ready csv file, import fs into index.ts It will give us an error because we haven't installed the type definition file for node js.
+
+```
+npm install @types/node
+```
+
+To turn our Json data into an array of strings:
+
+```
+const matches = fs.readFileSync('football.csv', {
+  encoding: 'utf-8',
+});
+```
+
+Then, to return it into another two dimensional array of more usable data structure - string[][]:
+
+```
+const matches = fs
+  .readFileSync('football.csv', {
+    encoding: 'utf-8',
+  })
+  .split('\n')
+  .map((row: string): string[] => {
+    return row.split(',');
+  });
+```
+
+Using Enums - enumeration. Signaling to other engineers about a collection of closely related values.
+
+```
+enum MatchResult  {
+  HomeWin ='H',
+  AwayWin = 'A',
+  Draw = 'D',
+};
+```
+
+##### When to use Enums:
+
+- Follow near-identical syntax rules as normal objects
+- Creates an object with the same keys and values when converted from TS to JS
+- Primary goal is to signal to other engineers that these are all closely related values
+- Use whenever we have a small fixed set of values that are all closely related and known at compile time
+
+##### Make the reading, parsing, analysing data reusable
+
+- Create a separagte class that will only read the csv files
+  - Fields - filename: string, data: string[][]
+  - Methods - read():void
