@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 //import file system from node modules. To stop the error, load type definition file
-var CsvFileReader_1 = require("./CsvFileReader");
+var MatchReader_1 = require("./MatchReader");
 var MatchResult_1 = require("./MatchResult");
 //Parse the data
-var reader = new CsvFileReader_1.CsvFileReader('football.csv');
+var reader = new MatchReader_1.MatchReader('football.csv');
 reader.read();
 var dateOfFirstMatch = reader.data[0][0];
 console.log({ dateOfFirstMatch: dateOfFirstMatch });
