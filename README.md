@@ -360,7 +360,9 @@ enum MatchResult  {
   <strong>Type assertion</strong> is when we as developers are trying to override TS default behavior, row[5] as MatchResult
 
 ```
-   .map((row: string[]): any => {
+type MatchData = [Date, string, string, number, number, MatchResult, string];
+
+   .map((row: string[]): MatchData => {
         return [
           dateStringToDate(row[0]),
           row[1],
@@ -373,3 +375,30 @@ enum MatchResult  {
 ```
 
 Tuples are very similar to arrays but organize the data in a specific order. Tuple type definitions to describe data.
+
+```
+To define a typle as a new type:
+type MatchData = [Date, string, string, number, number, MatchResult, string];
+```
+
+##### Refactoring CsvFileReader to make it reausable
+
+- abstract class CsvFileReader -> read():void -> mapRow(string[]): MatchData
+- class MatchReader - mapRow(string[]): MatchData (extends CsvFileReader)
+
+### Generics - By convenction you use the letter T for Type of Data
+
+- Like function arguments, but for types in class/function definitions
+- Allows us to define the type of a property/argument/return value at a future point
+- Used heavily when writing reusable code ex:
+
+```
+class HoldAnything<T>{
+  data: T
+}
+const holdNumber = new HoldAnything<number>()
+holdNumber.data = 123
+
+const holdString = new HoldAnything<string>()
+holdString.data = "isString"
+```
