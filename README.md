@@ -351,8 +351,25 @@ enum MatchResult  {
 - Primary goal is to signal to other engineers that these are all closely related values
 - Use whenever we have a small fixed set of values that are all closely related and known at compile time
 
-##### Make the reading, parsing, analysing data reusable
+##### Make the reading, parsing, analysing data generic and reusable
 
 - Create a separagte class that will only read the csv files
   - Fields - filename: string, data: string[][]
   - Methods - read():void
+- Create a separate class to parse date from "10/28/2018" to [2018,10,28]
+  <strong>Type assertion</strong> is when we as developers are trying to override TS default behavior, row[5] as MatchResult
+
+```
+   .map((row: string[]): any => {
+        return [
+          dateStringToDate(row[0]),
+          row[1],
+          row[2],
+          parseInt(row[3]),
+          parseInt(row[4]),
+          row[5] as MatchResult
+        ];
+      });
+```
+
+Tuples are very similar to arrays but organize the data in a specific order. Tuple type definitions to describe data.
