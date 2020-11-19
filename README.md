@@ -301,3 +301,121 @@ class LinkedList{
   - Sets up a contract between different classes
   - Use when we are trying to build up a definition of an object
   - Strongly couples classes together
+
+### Reusable Code, Stats app will read a CSV file, run it and analyze it.
+
+#### CSV Data -> Load -> Parse -> Analyze -> Report
+
+- Documentation on reading csv files: [NodeJS.org](https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options)
+- To ready csv file, import fs into index.ts It will give us an error because we haven't installed the type definition file for node js.
+
+```
+npm install @types/node
+```
+
+To turn our Json data into an array of strings:
+
+```
+const matches = fs.readFileSync('football.csv', {
+  encoding: 'utf-8',
+});
+```
+
+Then, to return it into another two dimensional array of more usable data structure - string[][]:
+
+```
+const matches = fs
+  .readFileSync('football.csv', {
+    encoding: 'utf-8',
+  })
+  .split('\n')
+  .map((row: string): string[] => {
+    return row.split(',');
+  });
+```
+
+Using Enums - enumeration. Signaling to other engineers about a collection of closely related values.
+
+```
+enum MatchResult  {
+  HomeWin ='H',
+  AwayWin = 'A',
+  Draw = 'D',
+};
+```
+
+##### When to use Enums:
+
+- Follow near-identical syntax rules as normal objects
+- Creates an object with the same keys and values when converted from TS to JS
+- Primary goal is to signal to other engineers that these are all closely related values
+- Use whenever we have a small fixed set of values that are all closely related and known at compile time
+
+##### Make the reading, parsing, analysing data generic and reusable
+
+- Create a separagte class that will only read the csv files
+  - Fields - filename: string, data: string[][]
+  - Methods - read():void
+- Create a separate class to parse date from "10/28/2018" to [2018,10,28]
+  <strong>Type assertion</strong> is when we as developers are trying to override TS default behavior, row[5] as MatchResult
+
+```
+type MatchData = [Date, string, string, number, number, MatchResult, string];
+
+   .map((row: string[]): MatchData => {
+        return [
+          dateStringToDate(row[0]),
+          row[1],
+          row[2],
+          parseInt(row[3]),
+          parseInt(row[4]),
+          row[5] as MatchResult
+        ];
+      });
+```
+
+Tuples are very similar to arrays but organize the data in a specific order. Tuple type definitions to describe data.
+
+```
+To define a typle as a new type:
+type MatchData = [Date, string, string, number, number, MatchResult, string];
+```
+
+##### Refactoring CsvFileReader to make it reausable. Aproach # 1 - Inheritance
+
+- abstract class CsvFileReader -> read():void -> mapRow(string[]): MatchData
+- class MatchReader - mapRow(string[]): MatchData (extends CsvFileReader)
+
+### Generics - By convenction you use the letter T for Type of Data
+
+- Like function arguments, but for types in class/function definitions
+- Allows us to define the type of a property/argument/return value at a future point
+- Used heavily when writing reusable code ex:
+
+```
+class HoldAnything<T>{
+  data: T
+}
+const holdNumber = new HoldAnything<number>()
+holdNumber.data = 123
+
+const holdString = new HoldAnything<string>()
+holdString.data = "isString"
+```
+
+##### Refactoring CsvFileReader to make it reausable. Aproach # 2 - Interface-Based
+
+- interface DataReader:
+  - read(): void
+  - data: string[][]
+- class MatchReader
+  - reader: DataReader
+  - load(): void
+- class CsvFileReader
+  - read(): void
+  - data: string[][]
+
+### Inheritance vs Composition
+
+- Inheritance is characterized by an "is a" relationship between two classes
+- Composition(one object has a reference to another object) is characterized by a "has a" relationship between two classes
