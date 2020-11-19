@@ -381,7 +381,7 @@ To define a typle as a new type:
 type MatchData = [Date, string, string, number, number, MatchResult, string];
 ```
 
-##### Refactoring CsvFileReader to make it reausable
+##### Refactoring CsvFileReader to make it reausable. Aproach # 1 - Inheritance
 
 - abstract class CsvFileReader -> read():void -> mapRow(string[]): MatchData
 - class MatchReader - mapRow(string[]): MatchData (extends CsvFileReader)
@@ -402,3 +402,15 @@ holdNumber.data = 123
 const holdString = new HoldAnything<string>()
 holdString.data = "isString"
 ```
+
+##### Refactoring CsvFileReader to make it reausable. Aproach # 2 - Interface-Based
+
+- interface DataReader:
+  - read(): void
+  - data: string[][]
+- class MatchReader
+  - reader: DataReader
+  - load(): void
+- class CsvFileReader
+  - read(): void
+  - data: string[][]
