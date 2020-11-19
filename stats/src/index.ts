@@ -1,16 +1,19 @@
 //import file system from node modules. To stop the error, load type definition file
 import { MatchReader } from './MatchReader';
+import { CsvFileReader } from './CsvFileReader';
 import { MatchResult } from './MatchResult';
-//Parse the data
-const reader = new MatchReader('football.csv');
-reader.read();
+//Create an object that satisfies the "DataReader" interface
+const csvFileReader = new CsvFileReader('football.csv');
 
-const dateOfFirstMatch = reader.data[0][0];
-console.log({ dateOfFirstMatch });
+//Create an instance of MatchReader and pass in somehting satisfying the "DataReader" interface
+const matchReader = new MatchReader(csvFileReader);
+
+//Parse the data
+matchReader.load();
 
 //Analyze the date by counting how many times there are wins for man United
 let manUnitedWins = 0;
-for (let match of reader.data) {
+for (let match of matchReader.matches) {
   if (match[1] === 'Man United' && match[5] === MatchResult.HomeWin) {
     manUnitedWins++;
   } else if (match[2] === 'Man United' && match[5] === MatchResult.AwayWin) {
