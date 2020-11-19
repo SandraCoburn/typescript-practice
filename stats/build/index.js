@@ -6,6 +6,8 @@ var MatchResult_1 = require("./MatchResult");
 //Parse the data
 var reader = new CsvFileReader_1.CsvFileReader('football.csv');
 reader.read();
+var dateOfFirstMatch = reader.data[0][0];
+console.log({ dateOfFirstMatch: dateOfFirstMatch });
 //Analyze the date by counting how many times there are wins for man United
 var manUnitedWins = 0;
 for (var _i = 0, _a = reader.data; _i < _a.length; _i++) {
