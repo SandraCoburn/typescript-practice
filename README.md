@@ -414,3 +414,8 @@ holdString.data = "isString"
 - class CsvFileReader
   - read(): void
   - data: string[][]
+
+### Inheritance vs Composition
+
+- Inheritance is characterized by an "is a" relationship between two classes
+- Composition(one object has a reference to another object) is characterized by a "has a" relationship between two classes
