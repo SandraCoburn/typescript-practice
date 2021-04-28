@@ -1,4 +1,4 @@
-# typrescript-practice
+# typescript-practice
 
 ### Install TypeScript globaly
 
